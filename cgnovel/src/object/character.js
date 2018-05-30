@@ -14,4 +14,8 @@ export default class Character{
 		this.bitmap.x = x;
 		this.bitmap.y = y;
 	}
+
+	get_xy(){
+		return {x:this.bitmap.x, y:this.bitmap.y };
+	}
 };

@@ -9,7 +9,6 @@ export default class Command{
     this.is_wait_end = is_wait_end;
     this.is_end = false;  // コマンドの終了
     this.command_manager = command_manager;
-
     // updateをtickに登録
     // createjs.Ticker.addEventListener("tick", function(){this.update()}.bind(this));
   }
@@ -19,7 +18,8 @@ export default class Command{
 
   // 終了処理
   command_end(){
-    console.log("command_end");
+    // for debug
+    // console.log("command_end");
 
     if(this.is_wait_end){
       this.command_manager.wait_end--;

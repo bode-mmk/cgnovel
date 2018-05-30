@@ -17,7 +17,8 @@ export default class Message{
 
     this.clock++;
 
-		console.log("speed:");
+		// for debug
+		// console.log("speed:");
 
     if(this.clock > this.speed){
       this.counter++;

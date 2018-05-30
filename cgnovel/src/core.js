@@ -6,6 +6,7 @@ import CommandManager from './command/command_manager.js';
 import CommandMessage from './command/command_message.js';
 import CommandLoad from './command/command_load.js';
 import CommandShow from './command/command_show.js';
+import CommandMove from './command/command_move.js';
 
 export default class CGNovel{
   constructor(window_width, window_height){
@@ -96,6 +97,7 @@ export default class CGNovel{
       let command = this.data.content.shift();
 
       // 解析
+      // これもしかしてshiftとか使ったほうが綺麗にかけたりするかな？
       let strings = command.split(",");
       if(strings[0] === ":message"){
         this.manager.push_command(strings[0], new CommandMessage(strings[1], strings[2], 2, this.object.message_name, this.object.message, this.manager));
@@ -103,12 +105,16 @@ export default class CGNovel{
         this.manager.push_command(strings[0], new CommandLoad(strings[1], strings[2], this.object.character, this.manager, this.stage, this.object.message_box));
       }else if(strings[0] === ":show"){
         this.manager.push_command(strings[0], new CommandShow(strings[1], strings[2], strings[3], strings[4], this.object.character, this.object.character_current_key, this.manager));
+      }else if(strings[0] === ":move"){
+        this.manager.push_command(strings[0], new CommandMove(this.object.character[strings[1]][this.object.character_current_key[strings[1]]], strings[2], strings.slice(3),this.manager));
       }
     }
 
     // これはやんちゃ
     for(let key in this.manager.command_list){
-      this.manager.command_list[key].update();
+      if(!this.manager.command_list[key].is_end){
+        this.manager.command_list[key].update();
+      }
     }
   }
 

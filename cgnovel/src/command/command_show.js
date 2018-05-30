@@ -9,6 +9,7 @@ export default class CommandShow extends Command{
 
   show(x, y, key, character_name, object_character, object_character_current_key){
     // 現在のものを非表示に
+    // なんつーかここアホみたいなコードじゃない？そんな事無い？
     let current = object_character[character_name][object_character_current_key[character_name]];
     if(current){
       current.set_visible(false);
