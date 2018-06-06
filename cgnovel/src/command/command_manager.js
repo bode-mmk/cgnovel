@@ -21,7 +21,10 @@ export default class CommandManager{
   on_click(){
     // クリックイベントの通知
     for(let key in this.command_list){
-      this.command_list[key].on_click();
+      // endしてるイベントは行わない というこの判定が原因で、ダブルクリックしないと先に進まない現象が起きてる
+      if(!this.command_list[key].is_end){
+        this.command_list[key].on_click();
+      }
     }
   }
 

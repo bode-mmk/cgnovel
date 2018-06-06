@@ -1,7 +1,7 @@
 ﻿import CGNovel from './core.js';
 
 // APP instance
-var CGNOVEL = new CGNovel(window.innerWidth, window.innerHeight);
+var CGNOVEL = new CGNovel(window.innerWidth, window.innerHeight, "main_canvas");
 
 // スクリプトファイルの読み込み
 CGNOVEL.read_file("./script/indigo.src");
